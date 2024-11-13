@@ -200,12 +200,10 @@ const init = async () => {
         document.body.classList.add("dark");
     }
 
-    const resDataVersion = await fetch('/data/version');
-    const resQuestRewards = await fetch('/data');
-    if (resDataVersion.ok && resQuestRewards.ok) {
-        document.getElementById('data-version').innerHTML = await resDataVersion.json();
+    const resQuestRewards = await fetch('/data/questrewards.json');
+    if (resQuestRewards.ok) {
         questRewards = await resQuestRewards.json();
-        
+
         fillLvlSelector(questRewards[0].exp.length)
         buildHtmlTable()
 
